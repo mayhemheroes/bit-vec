@@ -1,0 +1,27 @@
+[package]
+name = "bit-vec-fuzz"
+version = "0.0.0"
+authors = ["Automatically generated"]
+publish = false
+edition = "2018"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+serde_json = "1.0"
+
+[dependencies.bit-vec]
+path = ".."
+features = ["serde_std"]
+
+# Prevent this from interfering with workspaces
+[workspace]
+members = ["."]
+
+[[bin]]
+name = "bitvec-fuzz"
+path = "fuzz_targets/bitvec-fuzz.rs"
+test = false
+doc = false
